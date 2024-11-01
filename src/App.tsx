@@ -38,7 +38,12 @@ function TodoInputCard(props: { onSubmit?: () => void; parentId?: string; todoId
 
   return (
     <div className={'flex gap-3'}>
-      <Input placeholder={'Add a todo'} onChange={e => setValue(e.target.value)} value={value} />
+      <Input
+        autoFocus
+        placeholder={'Add a todo'}
+        onChange={e => setValue(e.target.value)}
+        value={value}
+      />
       {error && (
         <div>
           <small>{error}</small>
@@ -108,7 +113,7 @@ const TodoItem = (props: { todoId: string }) => {
             size="icon"
             onClick={e => {
               e.preventDefault();
-              deleteTodo(props.todoId);
+              deleteTodo({ id: props.todoId });
             }}
           >
             <Trash className="h-4 w-4" />
